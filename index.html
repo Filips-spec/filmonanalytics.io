@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Filmon - Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -259,6 +259,72 @@
             color: var(--text-primary);
         }
 
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px var(--shadow);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--card-bg), var(--border));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .blog-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .blog-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .blog-link:hover {
+            transform: translateX(5px);
+        }
+
         footer {
             text-align: center;
             padding: 3rem 5%;
@@ -289,7 +355,7 @@
                 padding: 6rem 5%;
             }
 
-            .services-grid, .skills-grid {
+            .services-grid, .skills-grid, .blog-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -302,6 +368,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="theme-toggle" onclick="toggleTheme()">
@@ -398,6 +465,44 @@
         </div>
     </section>
 
+    <section id="blog">
+        <div class="container">
+            <h2>Blog</h2>
+            <p class="section-subtitle">
+                Thoughts on data, economics, and finance
+            </p>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">📊</div>
+                    <div class="blog-content">
+                        <div class="blog-date">October 10, 2025</div>
+                        <h3>Understanding Market Trends Through Data</h3>
+                        <p>Exploring how data analytics can reveal hidden patterns in financial markets and help make better investment decisions.</p>
+                        <a href="#" class="blog-link">Read More →</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">💰</div>
+                    <div class="blog-content">
+                        <div class="blog-date">October 5, 2025</div>
+                        <h3>Macroeconomic Indicators to Watch</h3>
+                        <p>A deep dive into the key economic indicators that drive market movements and how to interpret them effectively.</p>
+                        <a href="#" class="blog-link">Read More →</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">🎯</div>
+                    <div class="blog-content">
+                        <div class="blog-date">September 28, 2025</div>
+                        <h3>Strategic Investment Frameworks</h3>
+                        <p>Building a robust investment strategy that combines quantitative analysis with strategic thinking.</p>
+                        <a href="#" class="blog-link">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" style="min-height: 60vh;">
         <div class="container" style="text-align: center;">
             <h2>Let's Work Together</h2>
@@ -461,7 +566,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card, .skill-item').forEach(el => {
+        document.querySelectorAll('.service-card, .skill-item, .blog-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease-out';
