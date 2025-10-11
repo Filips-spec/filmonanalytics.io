@@ -305,7 +305,7 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="theme-toggle" onclick="toggleTheme()">
-                <span id="theme-icon">🌙</span>
+                <span id="theme-icon">☀️</span>
             </button>
         </div>
     </nav>
@@ -409,7 +409,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Your Name. All rights reserved.</p>
+        <p>&copy; 2025 Filmon. All rights reserved.</p>
     </footer>
 
     <script>
@@ -419,22 +419,22 @@
             const themeIcon = document.getElementById('theme-icon');
             const currentTheme = html.getAttribute('data-theme');
             
-            if (currentTheme === 'light') {
+            if (currentTheme === 'dark') {
                 html.removeAttribute('data-theme');
-                themeIcon.textContent = '🌙';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                html.setAttribute('data-theme', 'light');
                 themeIcon.textContent = '☀️';
                 localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
             }
         }
 
         // Load saved theme
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-            document.getElementById('theme-icon').textContent = '☀️';
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('theme-icon').textContent = '🌙';
         }
 
         // Smooth scrolling
