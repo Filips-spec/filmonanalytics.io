@@ -63,13 +63,21 @@
         }
 
         .logo {
-            height: 40px;
-            width: auto;
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
             transition: transform 0.3s;
+            background: transparent;
+            border-radius: 8px;
+            padding: 5px;
         }
 
         .logo:hover {
             transform: scale(1.05);
+        }
+
+        [data-theme="dark"] .logo {
+            filter: brightness(1.2);
         }
 
         nav ul {
@@ -364,10 +372,8 @@
             }
 
             .logo {
-                height: 35px;
-                order: 1;
-                width: 100%;
-                text-align: center;
+                height: 45px;
+                width: 45px;
             }
 
             nav ul {
