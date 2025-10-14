@@ -46,7 +46,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: #5a6268;
+            background: #2F3438;
             backdrop-filter: blur(10px);
             padding: 1.5rem 5%;
             z-index: 1000;
@@ -83,7 +83,7 @@
         }
 
         nav a {
-            color: #ffffff !important;
+            color: #FFFFFF !important;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
@@ -91,7 +91,7 @@
         }
 
         nav a:hover {
-            color: #f0f0f0 !important;
+            color: #00AEEF !important;
         }
 
         nav a::after {
@@ -101,7 +101,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #ffffff;
+            background: #00AEEF;
             transition: width 0.3s;
         }
 
@@ -120,11 +120,12 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #ffffff;
+            color: #FFFFFF;
         }
 
         .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(0, 174, 239, 0.3);
+            border-color: #00AEEF;
         }
 
         section {
@@ -138,7 +139,7 @@
         .hero {
             text-align: center;
             animation: fadeIn 1s ease-in;
-            padding-top: 2rem;
+            padding-top: 5rem;
         }
 
         @keyframes fadeIn {
@@ -362,32 +363,42 @@
                 font-size: 2rem;
             }
 
-            nav ul {
-                gap: 1.5rem;
-                font-size: 0.9rem;
+            nav {
+                padding: 1rem 3%;
             }
 
             .nav-content {
                 flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
+                justify-content: space-between;
+                gap: 0.8rem;
             }
 
             .logo {
-                height: 45px;
-                width: 45px;
+                height: 40px;
+                width: 40px;
+                order: 1;
             }
 
             nav ul {
-                order: 2;
+                order: 3;
+                gap: 1rem;
+                font-size: 0.85rem;
+                width: 100%;
+                justify-content: center;
             }
 
             .theme-toggle {
-                order: 3;
+                order: 2;
+                padding: 0.4rem 0.8rem;
+                font-size: 1rem;
             }
 
             section {
-                padding: 6rem 5%;
+                padding: 10rem 5% 6rem 5%;
+            }
+
+            .hero {
+                padding-top: 2rem;
             }
 
             .services-grid, .skills-grid, .blog-grid {
@@ -478,7 +489,7 @@
                     <div class="skill-name">React</div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-icon">🔷</div>
+                    <div class="skill-icon">📷</div>
                     <div class="skill-name">Figma</div>
                 </div>
                 <div class="skill-item">
