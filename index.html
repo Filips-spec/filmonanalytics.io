@@ -63,8 +63,8 @@
         }
 
         .logo {
-            height: 50px;
-            width: 50px;
+            height: 60px;
+            width: 60px;
             object-fit: contain;
             transition: transform 0.3s;
             background: transparent;
@@ -76,10 +76,6 @@
             transform: scale(1.05);
         }
 
-        [data-theme="dark"] .logo {
-            filter: brightness(1.2);
-        }
-
         nav ul {
             list-style: none;
             display: flex;
@@ -87,11 +83,15 @@
         }
 
         nav a {
-            color: var(--text-primary);
+            color: #ffffff !important;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
+        }
+
+        nav a:hover {
+            color: #f0f0f0 !important;
         }
 
         nav a::after {
@@ -101,7 +101,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: #ffffff;
             transition: width 0.3s;
         }
 
@@ -110,8 +110,8 @@
         }
 
         .theme-toggle {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50px;
             padding: 0.5rem 1rem;
             cursor: pointer;
@@ -120,10 +120,11 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: #ffffff;
         }
 
         .theme-toggle:hover {
-            background: var(--border);
+            background: rgba(255, 255, 255, 0.25);
         }
 
         section {
@@ -137,6 +138,7 @@
         .hero {
             text-align: center;
             animation: fadeIn 1s ease-in;
+            padding-top: 2rem;
         }
 
         @keyframes fadeIn {
