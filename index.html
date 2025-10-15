@@ -285,6 +285,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            justify-items: center;
         }
 
         .blog-card {
@@ -294,6 +295,7 @@
             overflow: hidden;
             transition: all 0.4s;
             cursor: pointer;
+            max-width: 450px;
         }
 
         .blog-card:hover {
@@ -304,12 +306,9 @@
 
         .blog-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--card-bg), var(--border));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
+            height: 250px;
+            object-fit: cover;
+            display: block;
         }
 
         .blog-content {
@@ -407,6 +406,10 @@
 
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog-image {
+                height: 200px;
             }
         }
     </style>
@@ -518,30 +521,12 @@
             </p>
             <div class="blog-grid">
                 <div class="blog-card">
-                    <div class="blog-image">🏢</div>
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="Modern data center with server racks" class="blog-image">
                     <div class="blog-content">
                         <div class="blog-date">October 13, 2025</div>
                         <h3>Big Data 2025: 181 Zettabytes and the 2% Paradox</h3>
                         <p>Global data volume will reach 181 zettabytes by 2025, yet only 2-3% is analyzed. Analysis of Big Data market dynamics, infrastructure, and challenges.</p>
                         <a href="/reports/big-data-2025.html" class="blog-link">Read Full Report →</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">💰</div>
-                    <div class="blog-content">
-                        <div class="blog-date">October 5, 2025</div>
-                        <h3>Macroeconomic Indicators to Watch</h3>
-                        <p>A deep dive into the key economic indicators that drive market movements and how to interpret them effectively.</p>
-                        <a href="#" class="blog-link">Read More →</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">🎯</div>
-                    <div class="blog-content">
-                        <div class="blog-date">September 28, 2025</div>
-                        <h3>Strategic Investment Frameworks</h3>
-                        <p>Building a robust investment strategy that combines quantitative analysis with strategic thinking.</p>
-                        <a href="#" class="blog-link">Read More →</a>
                     </div>
                 </div>
             </div>
