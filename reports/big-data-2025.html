@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     
     <!-- Primary Meta Tags -->
     <title>Big Data 2025: 181 Zettabytes and the 2% Paradox | Filmon Analytics</title>
@@ -162,6 +162,7 @@
             background: var(--bg-primary);
             padding: 0;
             transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
         }
 
         /* Navbar Styles */
@@ -175,6 +176,7 @@
             z-index: 1000;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             transition: background 0.3s ease;
+            box-sizing: border-box;
         }
 
         .nav-content {
@@ -258,6 +260,8 @@
             background: white;
             padding: 80px 60px;
             margin-top: 100px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         [data-theme="dark"] .container {
@@ -271,6 +275,7 @@
             margin-bottom: 24px;
             line-height: 1.1;
             letter-spacing: -0.02em;
+            word-wrap: break-word;
         }
         
         .article-meta {
@@ -356,6 +361,7 @@
         ul {
             margin: 24px 0 24px 0;
             padding-left: 24px;
+            max-width: 100%;
         }
         
         li {
@@ -364,6 +370,7 @@
             color: var(--text-secondary);
             line-height: 1.7;
             padding-left: 8px;
+            word-wrap: break-word;
         }
         
         li::marker {
@@ -372,12 +379,14 @@
         
         .hero-image {
             width: 100%;
+            max-width: 100%;
             height: auto;
             max-height: 500px;
             object-fit: cover;
             border-radius: 12px;
             margin: 32px 0 40px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: block;
         }
         
         .chart-wrapper {
@@ -386,6 +395,7 @@
             background: #fafafa;
             border-radius: 16px;
             border: 1px solid #e5e7eb;
+            overflow: hidden;
         }
 
         [data-theme="dark"] .chart-wrapper {
@@ -397,6 +407,13 @@
             position: relative;
             height: 500px;
             margin-top: 24px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .chart-container canvas {
+            max-width: 100%;
+            height: auto !important;
         }
         
         .chart-container-tall {
@@ -502,10 +519,11 @@
 
             nav ul {
                 order: 3;
-                gap: 1rem;
-                font-size: 0.85rem;
+                gap: 0.8rem;
+                font-size: 0.8rem;
                 width: 100%;
                 justify-content: center;
+                flex-wrap: wrap;
             }
 
             .theme-toggle {
@@ -515,21 +533,22 @@
             }
 
             .container {
-                padding: 40px 24px;
-                margin-top: 120px;
+                padding: 30px 20px;
+                margin-top: 140px;
             }
             
             h1 {
-                font-size: 36px;
+                font-size: 32px;
+                line-height: 1.2;
             }
             
             h2 {
-                font-size: 28px;
-                margin-top: 56px;
+                font-size: 26px;
+                margin-top: 48px;
             }
             
             h3 {
-                font-size: 22px;
+                font-size: 20px;
             }
             
             p, li {
@@ -538,25 +557,92 @@
             
             .article-meta {
                 flex-direction: column;
-                gap: 12px;
+                gap: 8px;
+                font-size: 14px;
+            }
+            
+            .hero-image {
+                max-height: 250px;
+                margin: 20px 0 30px;
             }
             
             .chart-wrapper {
-                padding: 24px;
-                margin: 40px 0;
+                padding: 20px;
+                margin: 40px -10px;
+                border-radius: 12px;
+            }
+            
+            .chart-title {
+                font-size: 20px;
+            }
+            
+            .chart-subtitle {
+                font-size: 14px;
             }
             
             .chart-container {
-                height: 400px;
+                height: 350px;
             }
             
             .chart-container-tall {
-                height: 1000px;
+                height: 900px;
+            }
+            
+            .toggle-btn {
+                padding: 10px 20px;
+                font-size: 14px;
             }
             
             .summary {
-                padding: 28px;
+                padding: 24px;
                 font-size: 16px;
+                margin-bottom: 36px;
+            }
+            
+            .summary strong {
+                font-size: 18px;
+            }
+            
+            .sources {
+                margin-top: 60px;
+                font-size: 14px;
+            }
+            
+            .sources h2 {
+                font-size: 24px;
+            }
+            
+            .sources h3 {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+                margin-top: 160px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            nav ul {
+                gap: 0.5rem;
+                font-size: 0.75rem;
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+            
+            .chart-wrapper {
+                padding: 15px;
+                margin: 30px -5px;
             }
         }
     </style>
@@ -564,15 +650,15 @@
 <body>
     <nav>
         <div class="nav-content">
-            <a href="https://filmonanalytics.com">
-                <img src="https://filmonanalytics.com/logo.png" alt="Filmon Analytics Logo" class="logo">
+            <a href="/">
+                <img src="/logo.png" alt="Filmon Analytics Logo" class="logo">
             </a>
             <ul>
-                <li><a href="https://filmonanalytics.com#home">Home</a></li>
-                <li><a href="https://filmonanalytics.com#projects">Projects</a></li>
-                <li><a href="https://filmonanalytics.com#skills">Expertise</a></li>
-                <li><a href="https://filmonanalytics.com#research">Research & Report</a></li>
-                <li><a href="https://filmonanalytics.com#contact">Contact</a></li>
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#skills">Expertise</a></li>
+                <li><a href="/#research">Research & Report</a></li>
+                <li><a href="/#contact">Contact</a></li>
             </ul>
             <button class="theme-toggle" onclick="toggleTheme()">
                 <span id="theme-icon">☀️</span>
@@ -1347,6 +1433,13 @@
             document.documentElement.setAttribute('data-theme', 'dark');
             document.getElementById('theme-icon').textContent = '🌙';
         }
+
+        // Prevent horizontal scroll on mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure no overflow
+            document.body.style.overflowX = 'hidden';
+            document.documentElement.style.overflowX = 'hidden';
+        });
     </script>
 </body>
 </html>
