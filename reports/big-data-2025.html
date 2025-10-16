@@ -202,6 +202,11 @@
             transform: scale(1.05);
         }
 
+        .logo-link {
+            display: flex;
+            align-items: center;
+        }
+
         nav ul {
             list-style: none;
             display: flex;
@@ -252,6 +257,79 @@
         .theme-toggle:hover {
             background: rgba(212, 175, 55, 0.3);
             border-color: #D4AF37;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: transparent;
+            border: none;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #FFFFFF;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100%;
+            background: #1a2332;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            max-height: 400px;
+            padding: 20px 5%;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-menu a {
+            color: #FFFFFF !important;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 10px 0;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: #D4AF37 !important;
         }
         
         .container {
@@ -506,39 +584,45 @@
             }
 
             .nav-content {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
                 justify-content: space-between;
-                gap: 0.8rem;
+                align-items: center;
             }
 
             .logo {
                 height: 40px;
                 width: 40px;
-                order: 1;
             }
 
+            /* HIDE desktop menu on mobile */
             nav ul {
-                order: 3;
-                gap: 0.8rem;
-                font-size: 0.8rem;
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
+                display: none !important;
+            }
+
+            /* SHOW hamburger on mobile */
+            .hamburger {
+                display: flex !important;
+                order: 2;
             }
 
             .theme-toggle {
-                order: 2;
+                order: 3;
                 padding: 0.4rem 0.8rem;
                 font-size: 1rem;
             }
 
+            /* SHOW mobile menu */
+            .mobile-menu {
+                display: block;
+            }
+
             .container {
                 padding: 30px 20px;
-                margin-top: 200px;
+                margin-top: 110px;
             }
             
             h1 {
-                font-size: 26px;
+                font-size: 28px;
                 line-height: 1.35;
                 margin-bottom: 20px;
                 word-wrap: break-word;
@@ -627,11 +711,11 @@
         @media (max-width: 480px) {
             .container {
                 padding: 20px 15px;
-                margin-top: 220px;
+                margin-top: 110px;
             }
             
             h1 {
-                font-size: 23px;
+                font-size: 24px;
                 line-height: 1.4;
             }
             
@@ -641,11 +725,6 @@
             
             h3 {
                 font-size: 18px;
-            }
-            
-            nav ul {
-                gap: 0.5rem;
-                font-size: 0.75rem;
             }
             
             .chart-container {
@@ -673,7 +752,17 @@
         
         @media (max-width: 414px) {
             .container {
-                margin-top: 230px;
+                margin-top: 110px;
+            }
+            
+            h1 {
+                font-size: 23px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .container {
+                margin-top: 110px;
             }
             
             h1 {
@@ -681,23 +770,13 @@
             }
         }
         
-        @media (max-width: 375px) {
+        @media (max-width: 360px) {
             .container {
-                margin-top: 240px;
+                margin-top: 110px;
             }
             
             h1 {
                 font-size: 21px;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .container {
-                margin-top: 250px;
-            }
-            
-            h1 {
-                font-size: 20px;
             }
         }
     </style>
@@ -705,9 +784,11 @@
 <body>
     <nav>
         <div class="nav-content">
-            <a href="/">
+            <a href="/" class="logo-link">
                 <img src="/logo.png" alt="Filmon Analytics Logo" class="logo">
             </a>
+            
+            <!-- Desktop Menu -->
             <ul>
                 <li><a href="/#home">Home</a></li>
                 <li><a href="/#projects">Projects</a></li>
@@ -715,11 +796,30 @@
                 <li><a href="/#research">Research & Report</a></li>
                 <li><a href="/#contact">Contact</a></li>
             </ul>
+            
+            <!-- Hamburger Button (Mobile Only) -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
             <button class="theme-toggle" onclick="toggleTheme()">
                 <span id="theme-icon">☀️</span>
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="/#home" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="/#projects" onclick="closeMobileMenu()">Projects</a></li>
+            <li><a href="/#skills" onclick="closeMobileMenu()">Expertise</a></li>
+            <li><a href="/#research" onclick="closeMobileMenu()">Research & Report</a></li>
+            <li><a href="/#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
 
     <div class="container">
         <h1>Data Centers and Infrastructures: The Challenge of Expansion</h1>
@@ -1489,9 +1589,32 @@
             document.getElementById('theme-icon').textContent = '🌙';
         }
 
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+            
+            if (!isClickInsideMenu && !isClickOnHamburger && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
         // Prevent horizontal scroll on mobile
         document.addEventListener('DOMContentLoaded', function() {
-            // Ensure no overflow
             document.body.style.overflowX = 'hidden';
             document.documentElement.style.overflowX = 'hidden';
         });
