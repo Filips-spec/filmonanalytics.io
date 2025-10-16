@@ -298,6 +298,47 @@
             font-size: 1.2rem;
         }
 
+        .cv-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cv-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.8rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .cv-button:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .cv-button.secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--border);
+        }
+
+        .cv-button.secondary:hover {
+            background: var(--card-bg);
+            border-color: var(--accent);
+        }
+
         footer {
             text-align: center;
             padding: 3rem 5%;
@@ -372,23 +413,32 @@
             .about-content li {
                 font-size: 0.95rem;
             }
+
+            .cv-buttons {
+                flex-direction: column;
+            }
+
+            .cv-button {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-content">
-            <a href="index-2.html" class="logo-link">
+            <a href="/" class="logo-link">
                 <img src="logo.png" alt="Filmon Analytics Logo" class="logo">
             </a>
             
             <ul>
-                <li><a href="index-2.html#home">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="index-2.html#projects">Projects</a></li>
-                <li><a href="index-2.html#skills">Expertises</a></li>
-                <li><a href="index-2.html#research">Research & Report</a></li>
-                <li><a href="index-2.html#contact">Contact</a></li>
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#skills">Expertises</a></li>
+                <li><a href="/#research">Research & Report</a></li>
+                <li><a href="/#contact">Contact</a></li>
             </ul>
             
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -405,12 +455,12 @@
 
     <div class="mobile-menu" id="mobileMenu">
         <ul>
-            <li><a href="index-2.html#home" onclick="closeMobileMenu()">Home</a></li>
-            <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
-            <li><a href="index-2.html#projects" onclick="closeMobileMenu()">Projects</a></li>
-            <li><a href="index-2.html#skills" onclick="closeMobileMenu()">Expertises</a></li>
-            <li><a href="index-2.html#research" onclick="closeMobileMenu()">Research & Report</a></li>
-            <li><a href="index-2.html#contact" onclick="closeMobileMenu()">Contact</a></li>
+            <li><a href="/#home" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="/about.html" onclick="closeMobileMenu()">About</a></li>
+            <li><a href="/#projects" onclick="closeMobileMenu()">Projects</a></li>
+            <li><a href="/#skills" onclick="closeMobileMenu()">Expertises</a></li>
+            <li><a href="/#research" onclick="closeMobileMenu()">Research & Report</a></li>
+            <li><a href="/#contact" onclick="closeMobileMenu()">Contact</a></li>
         </ul>
     </div>
 
@@ -440,6 +490,27 @@
                         <li>Historical trends and cycles</li>
                         <li>General-purpose technology and disruptive innovations</li>
                     </ul>
+
+                    <div class="cv-buttons">
+                        <a href="cv.pdf" target="_blank" class="cv-button">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            View CV
+                        </a>
+                        <a href="cv.pdf" download="Filmon_Pietrantozzi_CV.pdf" class="cv-button secondary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download CV
+                        </a>
+                    </div>
                 </div>
 
                 <div class="about-image-container">
