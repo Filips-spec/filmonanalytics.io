@@ -281,6 +281,19 @@
             letter-spacing: -1px;
         }
 
+        h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        #skills h3:first-of-type {
+            margin-top: 2rem;
+        }
+
         .section-subtitle {
             text-align: center;
             color: var(--text-secondary);
@@ -349,14 +362,10 @@
             transform: scale(1.05);
         }
 
-        .skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
         .skill-name {
             font-weight: 600;
             color: var(--text-primary);
+            font-size: 0.95rem;
         }
 
         .blog-grid {
@@ -458,12 +467,14 @@
                 width: 40px;
             }
 
+            /* HIDE desktop menu on mobile */
             nav ul {
-                display: none;
+                display: none !important;
             }
 
+            /* SHOW hamburger on mobile */
             .hamburger {
-                display: flex;
+                display: flex !important;
                 order: 2;
             }
 
@@ -473,6 +484,7 @@
                 font-size: 1rem;
             }
 
+            /* SHOW mobile menu */
             .mobile-menu {
                 display: block;
             }
@@ -493,6 +505,15 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            #skills h3 {
+                font-size: 1.2rem;
+                margin-top: 2.5rem;
+            }
+
+            #skills h3:first-of-type {
+                margin-top: 1.5rem;
+            }
+
             .blog-image {
                 height: 200px;
             }
@@ -502,7 +523,9 @@
 <body>
     <nav>
         <div class="nav-content">
-            <img src="logo.png" alt="Logo" class="logo">
+            <a href="/" class="logo-link">
+                <img src="logo.png" alt="Filmon Analytics Logo" class="logo">
+            </a>
             
             <!-- Desktop Menu -->
             <ul>
@@ -590,30 +613,86 @@
     <section id="skills">
         <div class="container">
             <h2>Expertise</h2>
+            
+            <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1.5rem; text-align: left;">Programming & Technical</h3>
             <div class="skills-grid">
                 <div class="skill-item">
-                    <div class="skill-icon">⚛️</div>
-                    <div class="skill-name">React</div>
+                    <div class="skill-name">Python</div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-icon">🔷</div>
-                    <div class="skill-name">Figma</div>
+                    <div class="skill-name">SQL</div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-icon">🎨</div>
-                    <div class="skill-name">Adobe XD</div>
+                    <div class="skill-name">R-Studio</div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-icon">💚</div>
-                    <div class="skill-name">Node.js</div>
+                    <div class="skill-name">Computer Science</div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-icon">🎭</div>
-                    <div class="skill-name">Tailwind</div>
+                    <div class="skill-name">Data Architecture</div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1.5rem; text-align: left;">Data & Analytics Tools</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">Tableau</div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-icon">🔥</div>
-                    <div class="skill-name">Firebase</div>
+                    <div class="skill-name">Microsoft Excel</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Data Analytics</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Dashboards</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Reporting & Analysis</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Statistics</div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1.5rem; text-align: left;">Business & Finance</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">Business Insights</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Finance</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">KPIs</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Strategic Planning</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Mathematics</div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1.5rem; text-align: left;">Soft Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">Analytical Skills</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Strategic Thinking</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Critical Thinking</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Problem Solving</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Communication</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Research Skills</div>
                 </div>
             </div>
         </div>
