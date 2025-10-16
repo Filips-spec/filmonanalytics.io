@@ -70,10 +70,16 @@
             background: transparent;
             border-radius: 8px;
             padding: 5px;
+            cursor: pointer;
         }
 
         .logo:hover {
             transform: scale(1.05);
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
         }
 
         nav ul {
@@ -369,6 +375,9 @@
             transition: all 0.4s;
             cursor: pointer;
             max-width: 450px;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .blog-card:hover {
@@ -410,11 +419,10 @@
             margin-top: 1rem;
             color: var(--accent);
             font-weight: 600;
-            text-decoration: none;
             transition: transform 0.3s;
         }
 
-        .blog-link:hover {
+        .blog-card:hover .blog-link {
             transform: translateX(5px);
         }
 
@@ -618,15 +626,15 @@
                 Thoughts on data, economics, and finance
             </p>
             <div class="blog-grid">
-                <div class="blog-card">
+                <a href="/reports/big-data-2025.html" class="blog-card">
                     <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="Modern data center with server racks" class="blog-image">
                     <div class="blog-content">
                         <div class="blog-date">October 13, 2025</div>
                         <h3>Big Data 2025: 181 Zettabytes and the 2% Paradox</h3>
                         <p>Global data volume will reach 181 zettabytes by 2025, yet only 2-3% is analyzed. Analysis of Big Data market dynamics, infrastructure, and challenges.</p>
-                        <a href="/reports/big-data-2025.html" class="blog-link">Read Full Report →</a>
+                        <span class="blog-link">Read Full Report →</span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
