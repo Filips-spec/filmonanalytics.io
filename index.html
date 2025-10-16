@@ -284,14 +284,9 @@
         h3 {
             font-size: 1.5rem;
             color: var(--text-primary);
-            margin-top: 3rem;
             margin-bottom: 1.5rem;
-            text-align: left;
+            text-align: center;
             font-weight: 600;
-        }
-
-        #skills h3:first-of-type {
-            margin-top: 2rem;
         }
 
         .section-subtitle {
@@ -329,6 +324,7 @@
             font-size: 1.8rem;
             margin-bottom: 1rem;
             color: var(--text-primary);
+            text-align: left;
         }
 
         .service-card p {
@@ -336,25 +332,52 @@
             line-height: 1.8;
         }
 
-        .skills-grid {
+        /* Expertise Categories Container */
+        .expertise-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
             margin-top: 3rem;
         }
 
-        .skill-item {
+        .expertise-category {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 15px;
-            padding: 2rem 1rem;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .expertise-category:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .expertise-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
             text-align: center;
             transition: all 0.3s;
         }
 
         .skill-item:hover {
             background: var(--border);
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .skill-name {
@@ -496,17 +519,9 @@
                 grid-template-columns: 1fr;
             }
 
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            #skills h3 {
-                font-size: 1.2rem;
-                margin-top: 2.5rem;
-            }
-
-            #skills h3:first-of-type {
-                margin-top: 1.5rem;
+            .expertise-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .blog-image {
@@ -525,9 +540,9 @@
             <!-- Desktop Menu -->
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Expertise</a></li>
+                <li><a href="#skills">Expertises</a></li>
                 <li><a href="#research">Research & Report</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -549,9 +564,9 @@
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
-            <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+            <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
             <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
-            <li><a href="#skills" onclick="closeMobileMenu()">Expertise</a></li>
+            <li><a href="#skills" onclick="closeMobileMenu()">Expertises</a></li>
             <li><a href="#research" onclick="closeMobileMenu()">Research & Report</a></li>
             <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
         </ul>
@@ -565,27 +580,7 @@
                 Financial data analyst with quantitative and strategic background.<br>
                 Transforming complex datasets into actionable insights for long-term investment decisions.
             </p>
-            <a href="#projects" class="cta-button">Explore My Work</a>
-        </div>
-    </section>
-
-    <section id="about" style="background: var(--bg-secondary); min-height: auto; padding: 6rem 5%;">
-        <div class="container" style="max-width: 900px;">
-            <h2>About</h2>
-            <div style="background: var(--bg-primary); padding: 3rem; border-radius: 20px; box-shadow: 0 4px 20px var(--shadow);">
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                    I'm a <strong>financial data analyst</strong> with a dual background in Economics & Finance and Communications from Università di Bologna and Università di Pisa. Currently completing a <strong>Data Analytics Career Accelerator</strong> at the London School of Economics and Political Science (LSE).
-                </p>
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                    I specialize in <strong>statistical methods, econometrics, and financial markets analysis</strong>, with hands-on experience in portfolio management and market evaluation. My approach combines quantitative rigor with strategic thinking to identify patterns and trends that support informed investment decisions.
-                </p>
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                    As a <strong>self-employed Market and Financial Analyst since 2013</strong>, I've developed expertise in risk management, financial forecasting, and geopolitical analysis. I've successfully analyzed markets ranging from cryptocurrencies to equities, always maintaining a strategic, long-term perspective.
-                </p>
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 0;">
-                    My current focus areas include designing visualizations and dashboards (Excel, Tableau, Python, R), developing quantitative trading models, and performing statistical modeling to extract actionable insights from complex financial data.
-                </p>
-            </div>
+            <a href="about.html" class="cta-button">About</a>
         </div>
     </section>
 
@@ -594,34 +589,16 @@
             <h2>Projects</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Big Data 2025: Infrastructure Report</h3>
-                    <p>Comprehensive analysis of the global Big Data market, examining 181 zettabytes of data, infrastructure distribution across 59% US concentration, and workforce challenges. Includes interactive visualizations and projections through 2033.</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);"><strong>Tools:</strong> Python, Chart.js, Web Analytics, Data Visualization</p>
+                    <h3>Interactive Dashboard</h3>
+                    <p>Coming soon...</p>
                 </div>
                 <div class="service-card">
-                    <h3>Machine Learning Trading System</h3>
-                    <p>Developed a quantitative trading model around earnings announcement dates, applying machine learning techniques to identify patterns and optimize trading strategies based on financial data analysis.</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);"><strong>Tools:</strong> Python, Machine Learning, Statistical Modeling, Financial Analytics</p>
+                    <h3>NHS Analysis</h3>
+                    <p>Coming soon...</p>
                 </div>
                 <div class="service-card">
-                    <h3>Flora Toscana Market Analysis</h3>
-                    <p>Strategic market entry assessment and investment feasibility study for UK and Kenya markets in the floriculture industry. Comprehensive analysis of market dynamics, competitive landscape, and financial projections.</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);"><strong>Tools:</strong> Market Research, Financial Modeling, Strategic Analysis, Excel</p>
-                </div>
-                <div class="service-card">
-                    <h3>Investment Portfolio Analysis</h3>
-                    <p>Conducted independent research and analysis on cryptocurrencies and equity markets, including Bitcoin and Palantir Technologies. Developed strategic approach focusing on portfolio management, risk assessment, and long-term value creation.</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);"><strong>Tools:</strong> Financial Analysis, Risk Management, Portfolio Optimization, Market Research</p>
-                </div>
-                <div class="service-card">
-                    <h3>Financial Dashboards & Visualizations</h3>
-                    <p>Design and development of interactive dashboards for financial data analysis using modern visualization tools. Focus on creating intuitive interfaces that transform complex financial metrics into actionable insights.</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);"><strong>Tools:</strong> Tableau, Python, R, Excel, Data Visualization Libraries</p>
-                </div>
-                <div class="service-card">
-                    <h3>LSE Employer Partner Project</h3>
-                    <p>Applied finance and strategy analysis project completed as part of LSE Data Analytics Career Accelerator. Combined quantitative methods with strategic frameworks to solve real-world business challenges.</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);"><strong>Tools:</strong> SQL, Python, Tableau, Statistical Analysis, Business Strategy</p>
+                    <h3>Clustering</h3>
+                    <p>Coming soon...</p>
                 </div>
             </div>
         </div>
@@ -629,87 +606,101 @@
 
     <section id="skills">
         <div class="container">
-            <h2>Expertise</h2>
+            <h2>Expertises</h2>
             
-            <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1.5rem; text-align: left;">Programming & Technical</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-name">Python</div>
+            <div class="expertise-container">
+                <!-- Programming & Technical -->
+                <div class="expertise-category">
+                    <h3>Programming & Technical</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-name">Python</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">SQL</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">R-Studio</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Computer Science</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Data Architecture</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-name">SQL</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">R-Studio</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Computer Science</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Data Architecture</div>
-                </div>
-            </div>
 
-            <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1.5rem; text-align: left;">Data & Analytics Tools</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-name">Tableau</div>
+                <!-- Data & Analytics Tools -->
+                <div class="expertise-category">
+                    <h3>Data & Analytics Tools</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-name">Tableau</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Microsoft Excel</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Data Analytics</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Dashboards</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Reporting & Analysis</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Statistics</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-name">Microsoft Excel</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Data Analytics</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Dashboards</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Reporting & Analysis</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Statistics</div>
-                </div>
-            </div>
 
-            <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1.5rem; text-align: left;">Business & Finance</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-name">Business Insights</div>
+                <!-- Business & Finance -->
+                <div class="expertise-category">
+                    <h3>Business & Finance</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-name">Business Insights</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Finance</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">KPIs</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Strategic Planning</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Mathematics</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-name">Finance</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">KPIs</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Strategic Planning</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Mathematics</div>
-                </div>
-            </div>
 
-            <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1.5rem; text-align: left;">Soft Skills</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-name">Analytical Skills</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Strategic Thinking</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Critical Thinking</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Problem Solving</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Communication</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Research Skills</div>
+                <!-- Soft Skills -->
+                <div class="expertise-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-name">Analytical Skills</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Strategic Thinking</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Critical Thinking</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Problem Solving</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Communication</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Research Skills</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -828,7 +819,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card, .skill-item, .blog-card').forEach(el => {
+        document.querySelectorAll('.service-card, .skill-item, .blog-card, .expertise-category').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease-out';
