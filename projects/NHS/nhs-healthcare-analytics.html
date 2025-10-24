@@ -106,6 +106,21 @@
             color: #D4AF37 !important;
         }
 
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
         .theme-toggle {
             background: rgba(212, 175, 55, 0.15);
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -123,6 +138,79 @@
         .theme-toggle:hover {
             background: rgba(212, 175, 55, 0.3);
             border-color: #D4AF37;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: transparent;
+            border: none;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #FFFFFF;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100%;
+            background: #1a2332;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            max-height: 400px;
+            padding: 20px 5%;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-menu a {
+            color: #FFFFFF !important;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 10px 0;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: #D4AF37 !important;
         }
 
         .back-button {
@@ -524,8 +612,41 @@
                 font-size: 1.5rem;
             }
 
+            nav {
+                padding: 1rem 3%;
+            }
+
+            .nav-content {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                height: 40px;
+                width: 40px;
+            }
+
+            /* HIDE desktop menu on mobile */
             nav ul {
-                gap: 1.5rem;
+                display: none !important;
+            }
+
+            /* SHOW hamburger on mobile */
+            .hamburger {
+                display: flex !important;
+                order: 2;
+            }
+
+            .theme-toggle {
+                order: 3;
+                padding: 0.4rem 0.8rem;
+                font-size: 1rem;
+            }
+
+            /* SHOW mobile menu */
+            .mobile-menu {
+                display: block;
             }
 
             .toolkit-grid {
@@ -538,18 +659,43 @@
     <nav>
         <div class="nav-content">
             <a href="/" class="logo-link">
-                <img src="/logo.png" alt="Logo" class="logo">
+                <img src="/logo.png" alt="Filmon Analytics Logo" class="logo">
             </a>
+            
+            <!-- Desktop Menu -->
             <ul>
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/about.html">About</a></li>
                 <li><a href="/#projects">Projects</a></li>
-                <li><a href="/#about">About</a></li>
+                <li><a href="/#skills">Expertises</a></li>
+                <li><a href="/#research">Research & Report</a></li>
                 <li><a href="/#contact">Contact</a></li>
             </ul>
+            
+            <!-- Hamburger Button (Mobile Only) -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
             <button class="theme-toggle" onclick="toggleTheme()">
                 <span id="theme-icon">☀️</span>
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="/#home" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="/about.html" onclick="closeMobileMenu()">About</a></li>
+            <li><a href="/#projects" onclick="closeMobileMenu()">Projects</a></li>
+            <li><a href="/#skills" onclick="closeMobileMenu()">Expertises</a></li>
+            <li><a href="/#research" onclick="closeMobileMenu()">Research & Report</a></li>
+            <li><a href="/#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
 
     <div class="container">
         <a href="/#projects" class="back-button">
@@ -804,6 +950,30 @@
             document.documentElement.setAttribute('data-theme', 'dark');
             document.getElementById('theme-icon').textContent = '🌙';
         }
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+            
+            if (!isClickInsideMenu && !isClickOnHamburger && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
     </script>
 </body>
 </html>
