@@ -498,6 +498,7 @@
             width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
+            padding-bottom: 10px;
         }
         
         .chart-container canvas {
@@ -684,8 +685,9 @@
             }
             
             .chart-container {
-                height: 500px;
+                height: 650px;
                 overflow-x: auto;
+                padding-bottom: 20px;
             }
             
             .chart-container-tall {
@@ -1536,8 +1538,11 @@
                         legend: {
                             position: 'bottom',
                             labels: {
-                                padding: 15,
-                                font: { size: 12 },
+                                padding: 10,
+                                font: { 
+                                    size: window.innerWidth < 768 ? 11 : 12 
+                                },
+                                boxWidth: window.innerWidth < 768 ? 15 : 40,
                                 generateLabels: function(chart) {
                                     const data = chart.data;
                                     return data.labels.map(function(label, i) {
