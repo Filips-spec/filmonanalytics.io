@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turtle Games Customer Analytics - Filmon Portfolio</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FXPLXLJ663"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FXPLXLJ663');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --accent: #D4AF37;
+            --border: rgba(0, 0, 0, 0.1);
+            --card-bg: rgba(0, 0, 0, 0.03);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #D4AF37;
+            --border: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #1a2332;
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: 60px;
+            object-fit: contain;
+            transition: transform 0.3s;
+            background: transparent;
+            border-radius: 8px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: #FFFFFF !important;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #D4AF37 !important;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #FFFFFF;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(212, 175, 55, 0.3);
+            border-color: #D4AF37;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: transparent;
+            border: none;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #FFFFFF;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100%;
+            background: #1a2332;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            max-height: 400px;
+            padding: 20px 5%;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-menu a {
+            color: #FFFFFF !important;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 10px 0;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: #D4AF37 !important;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+
+        .project-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-label {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .content-box {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .content-box p {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .toolkit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .tool-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+
+        .tool-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .methodology-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .methodology-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .step-content-wrapper {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .step-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .insights-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .insights-list li {
+            padding: 0;
+            background: transparent;
+            border: none;
+        }
+
+        .insight-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .insight-details {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .recommendations {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .recommendation-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .recommendation-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .recommendation-content {
+            flex: 1;
+        }
+
+        .recommendation-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .recommendation-content > div:last-child {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .download-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .viz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .viz-item {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .viz-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
+            border-color: var(--accent);
+        }
+
+        .viz-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .viz-caption {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .viz-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+        }
+
+        .download-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        footer {
+            background: #1a2332;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .download-section {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .download-section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+            text-align: left;
+        }
+
+        .download-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .view-link {
+            display: block;
+            margin-top: 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: underline;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .view-link:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .download-buttons {
+                flex-direction: column;
+            }
+            
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            nav {
+                padding: 1rem 3%;
+            }
+
+            .nav-content {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                height: 40px;
+                width: 40px;
+            }
+
+            /* HIDE desktop menu on mobile */
+            nav ul {
+                display: none !important;
+            }
+
+            /* SHOW hamburger on mobile */
+            .hamburger {
+                display: flex !important;
+                order: 2;
+            }
+
+            .theme-toggle {
+                order: 3;
+                padding: 0.4rem 0.8rem;
+                font-size: 1rem;
+            }
+
+            /* SHOW mobile menu */
+            .mobile-menu {
+                display: block;
+            }
+
+            .toolkit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo-link">
+                <img src="/logo.png" alt="Filmon Analytics Logo" class="logo">
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul>
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#skills">Expertises</a></li>
+                <li><a href="/#research">Research & Report</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            
+            <!-- Hamburger Button (Mobile Only) -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span id="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="/#home" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="/about.html" onclick="closeMobileMenu()">About</a></li>
+            <li><a href="/#projects" onclick="closeMobileMenu()">Projects</a></li>
+            <li><a href="/#skills" onclick="closeMobileMenu()">Expertises</a></li>
+            <li><a href="/#research" onclick="closeMobileMenu()">Research & Report</a></li>
+            <li><a href="/#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <a href="/#projects" class="back-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Projects
+        </a>
+
+        <div class="project-header">
+            <h1 class="project-title">Customer Loyalty and Marketing Analytics</h1>
+            <p class="project-subtitle">Clustering Customers through Data-Driven Insights to Drive Sales Growth</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Client:</span>
+                    <span>Turtle Games</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Dataset:</span>
+                    <span>2,000 Customer records</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="content-box">
+                <p>Turtle Games is a company that both manufactures and sells its own products, while also sourcing and retailing products made by other companies. This project analysed 2,000 customer records and customer reviews in order to answer four critical business questions:</p>
+                <p style="margin-top: 1rem;">1. What influences the loyalty points?<br>
+                2. How can we cluster the customers for marketing purposes?<br>
+                3. How can we leverage social data on customer reviews?<br>
+                4. Can prescriptive statistics demonstrate the suitability of the loyalty points data to create predictive models?</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Toolkit</h2>
+            <div class="toolkit-grid">
+                <div class="tool-item">
+                    <div class="tool-name">Python (Jupyter Notebook)</div>
+                    <div class="tool-description">Data analysis and visualization</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Pandas & NumPy libraries</div>
+                    <div class="tool-description">Data cleaning, exploration, aggregation, and statistical analysis</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Matplotlib & Seaborn libraries</div>
+                    <div class="tool-description">Advanced data visualization to identify patterns</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Statsmodels library</div>
+                    <div class="tool-description">Estimate statistical models and perform statistical tests</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">WordCloud</div>
+                    <div class="tool-description">Presentation of keywords that appear frequently in text data</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Methodology</h2>
+            <div class="content-box">
+                <div class="methodology-steps">
+                    <div class="methodology-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content-wrapper">
+                            <div class="step-title">Data Import and Quality Assessment</div>
+                            <div class="step-content">
+                                Imported the datasets and performed an exploratory data analysis (EDA). Evaluated data quality and analytical opportunities regarding various features: loyalty points, age, remuneration, and spending score. Investigated linear correlation and multilinear regression between features.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="methodology-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content-wrapper">
+                            <div class="step-title">Decision Trees</div>
+                            <div class="step-content">
+                                Performed a decision tree analysis which helped identify the most impactful factors on loyalty points, which can be used to create targeted marketing campaigns. The first decision tree attempt turned out to be overfitted (R² score = 1.0); after pruning (R² score: 0.91), the model could better classify data 91% of the time.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="methodology-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content-wrapper">
+                            <div class="step-title">K-means Clustering (Elbow method and Silhouette method)</div>
+                            <div class="step-content">
+                                Created a pair-plot to have a first glance of the best number of clusters. Performed the Elbow method and Silhouette method which generated two graphs and visually detected the best cluster number, confirming what was just an intuition from the pair-plot. Tried two different k-means approaches to verify the one which best fitted the analysis objectives.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="methodology-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content-wrapper">
+                            <div class="step-title">Sentiment Analysis</div>
+                            <div class="step-content">
+                                Performed basic EDA on the review data. Visualised through word clouds and a line graph the most frequent words. Evaluated the polarity of the reviews and of the summary comments in two different histograms. In addition, reviewed the top 20 positive reviews and the top 20 negative reviews.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="methodology-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content-wrapper">
+                            <div class="step-title">Synthesis</div>
+                            <div class="step-content">
+                                Synthesized quantitative and qualitative findings to address loyalty point accumulation, k-means clustering, and sentiment polarity. Added supplementary customer satisfaction score analysis.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Key Insights</h2>
+            <div class="content-box">
+                <ul class="insights-list">
+                    <li>
+                        <div class="insight-title">Loyalty Points and Correlation</div>
+                        <div class="insight-details">
+                            • Strongly and positively influenced by spending score and remuneration<br>
+                            • Age doesn't really determine loyalty points, but its inclusion in a multiple linear regression improves the fitting of the regression<br>
+                            • Multilinear model can predict 84% of the variance<br>
+                            • Histogram showed a right-skewed distribution, where the majority of customers accumulate relatively low points, while a few outliers earn a vast amount
+                        </div>
+                    </li>
+                    <li>
+                        <div class="insight-title">Sentiment Analysis</div>
+                        <div class="insight-details">
+                            • Frequency toward a more positive sentiment than negative sentiment<br>
+                            • Average Customer Satisfaction Score (Summary): 61.18%<br>
+                            • Average Customer Satisfaction Score (Review): 60.66%
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Business Recommendations</h2>
+            <div class="recommendations">
+                <div class="recommendation-item">
+                    <div class="recommendation-number">1</div>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Implement targeted marketing campaigns using 5-cluster segmentation</div>
+                        <div>Clustering revealed that 5 is the best fitting cluster number. This model can support marketing decisions by clustering customers into five groups and creating incentives suited for each: (1) High remuneration and spending, (2) Low remuneration and spending, (3) High remuneration, low spending, (4) Low remuneration, high spending, and (5) Medium remuneration and spending. Tailor messaging, offers, and loyalty rewards to each segment's unique characteristics.</div>
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <div class="recommendation-number">2</div>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Focus loyalty program enhancements on high-spending segments</div>
+                        <div>The multilinear model demonstrates that spending score and remuneration are the strongest predictors of loyalty points (84% variance explained). Prioritize retention efforts for high-spending customers who generate disproportionate loyalty value, while developing strategies to increase engagement among medium and low spenders.</div>
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <div class="recommendation-number">3</div>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Address negative sentiment to strengthen brand reputation</div>
+                        <div>While brand reputation remains strong overall, negative comments in both summaries and reviews reveal areas of improvement. Words like 'boring' and 'disappointing' appear frequently. Investigate product quality issues and customer experience pain points to reduce negative sentiment and improve satisfaction scores above the current 61% threshold.</div>
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <div class="recommendation-number">4</div>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Deploy predictive models for customer lifetime value optimization</div>
+                        <div>The decision tree model (91% accuracy after pruning) and multilinear regression (84% variance prediction) demonstrate strong predictive capabilities. Implement these models in marketing automation to identify high-potential customers early, optimize acquisition spend, and personalize engagement strategies based on predicted loyalty trajectory.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="download-section">
+                <h2 class="download-section-title">Download Project Files</h2>
+                <p class="download-description">Access the complete analysis report and Jupyter notebook with full code implementation.</p>
+                
+                <div class="download-buttons">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <a href="#" class="download-btn">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            Download Report (PDF)
+                        </a>
+                        <a href="#" class="view-link">View in browser</a>
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <a href="#" class="download-btn">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            Download Jupyter Notebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Filmon. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            const currentTheme = html.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                html.removeAttribute('data-theme');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('theme-icon').textContent = '🌙';
+        }
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+            
+            if (!isClickInsideMenu && !isClickOnHamburger && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
