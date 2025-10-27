@@ -707,7 +707,7 @@
 
         <div class="project-header">
             <h1 class="project-title">Customer Loyalty and Marketing Analytics</h1>
-            <p class="project-subtitle">Clustering Customers through Data-Driven Insights to Drive Sales Growth</p>
+            <p class="project-subtitle">Customer Clustering for Data-Driven Insight to Increase Sales</p>
             
             <div class="project-meta">
                 <div class="meta-item">
@@ -725,10 +725,10 @@
             <h2 class="section-title">Project Overview</h2>
             <div class="content-box">
                 <p>Turtle Games is a company that both manufactures and sells its own products, while also sourcing and retailing products made by other companies. This project analysed 2,000 customer records and customer reviews in order to answer four critical business questions:</p>
-                <p style="margin-top: 1rem;">1. What influences the loyalty points?<br>
-                2. How can we cluster the customers for marketing purposes?<br>
-                3. How can we leverage social data on customer reviews?<br>
-                4. Can prescriptive statistics demonstrate the suitability of the loyalty points data to create predictive models?</p>
+                <p style="margin-top: 1rem;">1. What influences loyalty points?<br>
+                2. How can customers be clustered for marketing purposes?<br>
+                3. How can social data be leveraged?<br>
+                4. Can prescriptive statistics demonstrate the suitability of loyalty points data to create predictive models?</p>
             </div>
         </section>
 
@@ -767,7 +767,7 @@
                         <div class="step-content-wrapper">
                             <div class="step-title">Data Import and Quality Assessment</div>
                             <div class="step-content">
-                                Imported the datasets and performed an exploratory data analysis (EDA). Evaluated data quality and analytical opportunities regarding various features: loyalty points, age, remuneration, and spending score. Investigated linear correlation and multilinear regression between features.
+                                Datasets were imported and exploratory data analysis (EDA) was performed. Data quality was evaluated and opportunities on the basis of the following features: loyalty points, age, remuneration, and spending score. Linear correlations and multilinear regressions were investigated.
                             </div>
                         </div>
                     </div>
@@ -777,7 +777,7 @@
                         <div class="step-content-wrapper">
                             <div class="step-title">Decision Trees</div>
                             <div class="step-content">
-                                Performed a decision tree analysis which helped identify the most impactful factors on loyalty points, which can be used to create targeted marketing campaigns. The first decision tree attempt turned out to be overfitted (R² score = 1.0); after pruning (R² score: 0.91), the model could better classify data 91% of the time.
+                                A decision tree analysis helped identify the most impactful factors tied to loyalty points, and their role in creating a targeted marketing campaign. The first decision tree attempt turned out to be overfitted (R² score = 1.0); after pruning (R² score: 0.91), the model correctly classified data 91% of the time.
                             </div>
                         </div>
                     </div>
@@ -785,9 +785,9 @@
                     <div class="methodology-step">
                         <div class="step-number">3</div>
                         <div class="step-content-wrapper">
-                            <div class="step-title">K-means Clustering (Elbow method and Silhouette method)</div>
+                            <div class="step-title">K-Means Clustering (Elbow method and Silhouette method)</div>
                             <div class="step-content">
-                                Created a pair-plot to have a first glance of the best number of clusters. Performed the Elbow method and Silhouette method which generated two graphs and visually detected the best cluster number, confirming what was just an intuition from the pair-plot. Tried two different k-means approaches to verify the one which best fitted the analysis objectives.
+                                A pair-plot was created to get a first glance at the best number of clusters. Elbow and Silhouette methods were performed and generated two graphs visually exposing the best cluster number. Two different k-means approaches were performed to identify the best suited for the objective.
                             </div>
                         </div>
                     </div>
@@ -797,7 +797,7 @@
                         <div class="step-content-wrapper">
                             <div class="step-title">Sentiment Analysis</div>
                             <div class="step-content">
-                                Performed basic EDA on the review data. Visualised through word clouds and a line graph the most frequent words. Evaluated the polarity of the reviews and of the summary comments in two different histograms. In addition, reviewed the top 20 positive reviews and the top 20 negative reviews.
+                                Basic EDA was performed on the review data. Word clouds and a line graph revealed the most frequent words. The polarity of the reviews and a summary of the comments were visualized in two different histograms. The top 20 positive reviews and the top 20 negative reviews were analyzed.
                             </div>
                         </div>
                     </div>
@@ -807,7 +807,7 @@
                         <div class="step-content-wrapper">
                             <div class="step-title">Synthesis</div>
                             <div class="step-content">
-                                Synthesized quantitative and qualitative findings to address loyalty point accumulation, k-means clustering, and sentiment polarity. Added supplementary customer satisfaction score analysis.
+                                Quantitative and qualitative were synthesized to address loyalty point accumulation, k-means clustering, and sentiment polarity. A supplementary customer satisfaction score analysis was added.
                             </div>
                         </div>
                     </div>
@@ -842,8 +842,8 @@
                         <div class="insight-title">Sentiment Analysis</div>
                         <div class="insight-details">
                             • Frequency toward a more positive sentiment than negative sentiment<br>
-                            • Average Customer Satisfaction Score (Summary): 61.18%<br>
-                            • Average Customer Satisfaction Score (Review): 60.66%
+                            • Average customer satisfaction score (Summary): 61.18%<br>
+                            • Average customer satisfaction score (Review): 60.66%
                         </div>
                     </li>
                 </ul>
@@ -871,14 +871,14 @@
                     <div class="recommendation-number">3</div>
                     <div class="recommendation-content">
                         <div class="recommendation-title">Address negative sentiment to strengthen brand reputation</div>
-                        <div>While brand reputation remains strong overall, negative comments in both summaries and reviews reveal areas of improvement. Words like 'boring' and 'disappointing' appear frequently. Investigate product quality issues and customer experience pain points to reduce negative sentiment and improve satisfaction scores above the current 61% threshold.</div>
+                        <div>While brand reputation remains strong overall, negative comments in both summaries and reviews reveal areas of improvement. Words like 'boring' and 'disappointing' appear frequently. Investigate product quality issues and negative customer feedback to improve satisfaction scores above the current 61% threshold.</div>
                     </div>
                 </div>
                 <div class="recommendation-item">
                     <div class="recommendation-number">4</div>
                     <div class="recommendation-content">
                         <div class="recommendation-title">Deploy predictive models for customer lifetime value optimization</div>
-                        <div>The decision tree model (91% accuracy after pruning) and multilinear regression (84% variance prediction) demonstrate strong predictive capabilities. Implement these models in marketing automation to identify high-potential customers early, optimize acquisition spend, and personalize engagement strategies based on predicted loyalty trajectory.</div>
+                        <div>The decision tree model (91% accuracy after pruning) and multilinear regression (84% variance prediction) demonstrate strong predictive capabilities. These marketing automation models should be implemented to identify early on high-potential customers, optimize acquisition, and personalize engagement strategies based on the predicted loyalty trajectory.</div>
                     </div>
                 </div>
             </div>
