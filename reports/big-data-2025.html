@@ -308,17 +308,18 @@
             left: 0;
             width: 100%;
             background: #1a2332;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: none;
             padding: 0;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            transition: max-height 0.3s ease, padding 0.3s ease, border-bottom 0.3s ease;
             z-index: 999;
         }
 
         .mobile-menu.active {
             max-height: 400px;
             padding: 20px 5%;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .mobile-menu ul {
