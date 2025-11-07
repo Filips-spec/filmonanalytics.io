@@ -717,7 +717,7 @@
                 
                 <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; align-items: flex-start;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                        <a href="/projects/2market/2market-report.pdf" download="2Market_Analysis_Report.pdf" class="download-button">
+                        <a href="/projects/2market/2market-report.pdf" onclick="event.preventDefault(); downloadFile('/projects/2market/2market-report.pdf', '2Market_Analysis_Report.pdf');" class="download-button">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                                 <polyline points="7 10 12 15 17 10"/>
@@ -729,7 +729,7 @@
                             View in browser
                         </a>
                     </div>
-                    <a href="/projects/2market/2market-dashboard.twbx" download="2Market_Dashboard.twbx" class="download-button">
+                    <a href="/projects/2market/2market-dashboard.twbx" onclick="event.preventDefault(); downloadFile('/projects/2market/2market-dashboard.twbx', '2Market_Dashboard.twbx');" class="download-button">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
                             <line x1="3" y1="9" x2="21" y2="9"/>
@@ -762,6 +762,16 @@
                 themeIcon.textContent = '🌙';
                 localStorage.setItem('theme', 'dark');
             }
+        }
+
+        // Download file function
+        function downloadFile(url, filename) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         // Load saved theme
