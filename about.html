@@ -330,6 +330,7 @@
             border: 2px solid var(--accent);
             cursor: pointer;
             font-size: 0.95rem;
+            font-family: inherit;
         }
 
         .cv-button:hover {
@@ -512,14 +513,14 @@
                             </svg>
                             View CV
                         </a>
-                        <a href="cv.pdf" download="Filmon_CV.pdf" class="cv-button secondary">
+                        <button onclick="downloadCV()" class="cv-button secondary">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
                             </svg>
                             Download CV
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -535,6 +536,27 @@
     </footer>
 
     <script>
+        function downloadCV() {
+            fetch('cv.pdf')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'Filmon_CV.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                })
+                .catch(error => {
+                    console.error('Download failed:', error);
+                    // Fallback: open in new tab if fetch fails
+                    window.open('cv.pdf', '_blank');
+                });
+        }
+
         function toggleTheme() {
             const html = document.documentElement;
             const themeIcon = document.getElementById('theme-icon');
