@@ -596,10 +596,17 @@
 
         .download-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 1rem;
+        }
+
+        .download-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .download-button {
@@ -962,24 +969,29 @@
             <div class="section-content">
                 <p>Access the complete analysis report and system architecture documentation.</p>
                 <div class="download-buttons">
-                    <a href="report.pdf" download class="download-button">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                        Download Report (PDF)
-                    </a>
-                    <a href="system-architecture.pdf" download class="download-button">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                        System Architecture Overview (PDF)
-                    </a>
+                    <div class="download-item">
+                        <a href="report.pdf" download class="download-button">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Download Report (PDF)
+                        </a>
+                        <a href="report.pdf" target="_blank" class="view-link">View in browser</a>
+                    </div>
+                    <div class="download-item">
+                        <a href="system-architecture.pdf" download class="download-button">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            System Architecture Overview (PDF)
+                        </a>
+                        <a href="system-architecture.pdf" target="_blank" class="view-link">View in browser</a>
+                    </div>
                 </div>
-                <a href="https://m-seam.replit.app" target="_blank" class="view-link">View in browser</a>
             </div>
         </section>
     </main>
