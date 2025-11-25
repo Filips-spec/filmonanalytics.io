@@ -300,7 +300,7 @@
         }
 
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 1.5rem;
@@ -316,9 +316,10 @@
         }
 
         .section-content p {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             margin-bottom: 1rem;
             line-height: 1.8;
+            font-size: 1.05rem;
         }
 
         .section-content p:last-child {
@@ -329,10 +330,11 @@
         .question-list {
             list-style: none;
             margin-top: 1rem;
+            counter-reset: item;
         }
 
         .question-list li {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             padding: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
@@ -344,12 +346,51 @@
             counter-increment: item;
             position: absolute;
             left: 0;
-            color: var(--accent);
+            color: var(--text-primary);
             font-weight: 600;
         }
 
-        .question-list {
-            counter-reset: item;
+        /* Methodology Steps */
+        .methodology-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .methodology-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .step-content-wrapper {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .step-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
 
         /* Bullet List */
@@ -489,20 +530,21 @@
         }
 
         .tool-card:hover {
+            transform: translateY(-5px);
             border-color: var(--accent);
-            box-shadow: 0 10px 30px var(--shadow);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
         }
 
         .tool-card h4 {
             color: var(--accent);
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .tool-card p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.5;
             margin-bottom: 0;
         }
@@ -526,6 +568,7 @@
         .cta-section {
             text-align: center;
             margin-top: 2rem;
+            margin-bottom: 3rem;
             padding: 2rem;
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -791,31 +834,58 @@
 
         <!-- Methodology -->
         <section class="section">
-            <h2 class="section-title">Project Methodology</h2>
+            <h2 class="section-title">Methodology</h2>
             <div class="section-content">
-                <div class="subsection">
-                    <h3 class="subsection-title">1. Data Preparation</h3>
-                    <p>The analysis uses data from January 2015 to August 2025, balancing the quantity of data required for modelling. After extensive research and rigorous quality evaluation, potential data sources were ranked by availability, cleanliness, quality and price. FRED, yFinance, Alpha Vantage, Kaggle and Reddit were chosen.</p>
-                </div>
+                <div class="methodology-steps">
+                    <div class="methodology-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content-wrapper">
+                            <div class="step-title">Data Preparation</div>
+                            <div class="step-content">
+                                The analysis uses data from January 2015 to August 2025, balancing the quantity of data required for modelling. After extensive research and rigorous quality evaluation, potential data sources were ranked by availability, cleanliness, quality and price. FRED, yFinance, Alpha Vantage, Kaggle and Reddit were chosen.
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="subsection">
-                    <h3 class="subsection-title">2. Exploratory Data Analysis (EDA)</h3>
-                    <p>Initial exploration was conducted using histograms and box plots to identify outliers. Skew testing assessed the normality of distributions. Linear and non-linear relationships were explored through correlations, scatterplots, SLR, MLR, decision trees, and random forests. A sentiment analysis EDA was added for all three stocks using Reddit discussion data, enabling the team to assess shifts in retail investor sentiment and examine how sentiment dynamics corresponded with stock price behaviour around earnings announcements.</p>
-                </div>
+                    <div class="methodology-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content-wrapper">
+                            <div class="step-title">Exploratory Data Analysis (EDA)</div>
+                            <div class="step-content">
+                                Initial exploration was conducted using histograms and box plots to identify outliers. Skew testing assessed the normality of distributions. Linear and non-linear relationships were explored through correlations, scatterplots, SLR, MLR, decision trees, and random forests. A sentiment analysis EDA was added for all three stocks using Reddit discussion data, enabling the team to assess shifts in retail investor sentiment and examine how sentiment dynamics corresponded with stock price behaviour around earnings announcements.
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="subsection">
-                    <h3 class="subsection-title">3. Key Trends & Preliminary Insights</h3>
-                    <p>Different shares were driven by unique factors, necessitating a tailored feature-weighting approach for accurate forecasting. Apple's share price showed a strong correlation with sentiment, while NVIDIA's was more seasonal, and Google's demonstrated a high degree of self-correlation over time.</p>
-                </div>
+                    <div class="methodology-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content-wrapper">
+                            <div class="step-title">Key Trends & Preliminary Insights</div>
+                            <div class="step-content">
+                                Different shares were driven by unique factors, necessitating a tailored feature-weighting approach for accurate forecasting. Apple's share price showed a strong correlation with sentiment, while NVIDIA's was more seasonal, and Google's demonstrated a high degree of self-correlation over time.
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="subsection">
-                    <h3 class="subsection-title">4. Building the Model</h3>
-                    <p>The framework relies on the theory that earnings drive reproducible patterns within windows before and after announcements. We quantify those patterns with sub-scores (EPS, macro, volatility, sentiment, revenue) and blend them into a composite score. Different methods were used to prevent influence from outliers and allow different data types to be normalized: validation, scaling, filtering, temporal controls, missing data handling, cross-validation, synthetic data, and QA.</p>
-                </div>
+                    <div class="methodology-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content-wrapper">
+                            <div class="step-title">Building the Model</div>
+                            <div class="step-content">
+                                The framework relies on the theory that earnings drive reproducible patterns within windows before and after announcements. We quantify those patterns with sub-scores (EPS, macro, volatility, sentiment, revenue) and blend them into a composite score. Different methods were used to prevent influence from outliers and allow different data types to be normalized: validation, scaling, filtering, temporal controls, missing data handling, cross-validation, synthetic data, and QA.
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="subsection">
-                    <h3 class="subsection-title">5. Technical Implementation</h3>
-                    <p>Adaptive thresholds are the default "engine" because they're transparent and robust with limited real events. Time-Series Cross-Validation (TS-CV) and cross-stock validation are activated for stronger stock-specific optimization or stress-test generalization. Synthetic data is used to augment training but not in validation, with rigid checks to avoid look-ahead bias.</p>
+                    <div class="methodology-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content-wrapper">
+                            <div class="step-title">Technical Implementation</div>
+                            <div class="step-content">
+                                Adaptive thresholds are the default "engine" because they're transparent and robust with limited real events. Time-Series Cross-Validation (TS-CV) and cross-stock validation are activated for stronger stock-specific optimization or stress-test generalization. Synthetic data is used to augment training but not in validation, with rigid checks to avoid look-ahead bias.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
