@@ -234,44 +234,13 @@
             overflow: hidden;
         }
 
-        .hero-bg-image {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%) scale(1.1);
-            z-index: -1;
-            opacity: 0.7;
-            object-fit: cover;
-        }
-
-        .hero-overlay {
+        #particle-canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0.7) 0%,
-                rgba(255, 255, 255, 0.5) 100%
-            );
             z-index: -1;
-        }
-
-        [data-theme="dark"] .hero-overlay {
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.7) 0%,
-                rgba(0, 0, 0, 0.5) 100%
-            );
-        }
-
-        [data-theme="dark"] .hero-bg-image {
-            opacity: 0.3;
         }
 
         @keyframes fadeIn {
@@ -665,8 +634,7 @@
     </div>
 
     <section id="home" class="hero">
-        <img src="hero-background.jpg" alt="" class="hero-bg-image">
-        <div class="hero-overlay"></div>
+        <canvas id="particle-canvas"></canvas>
         <div class="container">
             <h1>Hi, I'm Filmon</h1>
             <p class="subtitle">Bridging Data Into Investment Strategy</p>
@@ -914,7 +882,7 @@
         <div class="container" style="text-align: center;">
             <h2>Let's Work Together</h2>
             <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: center; margin-top: 2rem;">
-                <a href="/cdn-cgi/l/email-protection#93e3faf6e7e1f2fde7fce9e9fabdf5fafffefcfdd3f4fef2faffbdf0fcfe" class="cta-button">Get In Touch</a>
+                <a href="/cdn-cgi/l/email-protection#1868717d6c6a79766c77626271367e7174757776587f75797174367b7775" class="cta-button">Get In Touch</a>
                 <a href="https://www.linkedin.com/in/filmon-pietrantozzi/" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: #0077B5; color: white; border-radius: 50%; text-decoration: none; font-size: 1.5rem; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -1005,4 +973,118 @@
 
         document.querySelectorAll('.service-card, .skill-item, .blog-card, .expertise-category').forEach(el => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+
+    <script>
+        // Particle Network Animation
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            const hero = document.getElementById('home');
+            canvas.width = hero.offsetWidth;
+            canvas.height = hero.offsetHeight;
+        }
+
+        function getParticleColor() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            return isDark ? 'rgba(212, 175, 55, ' : 'rgba(26, 35, 50, ';
+        }
+
+        function getLineColor() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            return isDark ? 'rgba(212, 175, 55, ' : 'rgba(26, 35, 50, ';
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = getParticleColor() + '0.6)';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
+            for (let i = 0; i < Math.min(particleCount, 100); i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            const maxDistance = 150;
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        const opacity = (1 - distance / maxDistance) * 0.4;
+                        ctx.beginPath();
+                        ctx.strokeStyle = getLineColor() + opacity + ')';
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            connectParticles();
+            animationId = requestAnimationFrame(animate);
+        }
+
+        // Initialize
+        resizeCanvas();
+        initParticles();
+        animate();
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        // Update colors when theme changes
+        const originalToggleTheme = toggleTheme;
+        toggleTheme = function() {
+            originalToggleTheme();
+            // Colors will update automatically on next frame
+        };
+    </script>
+</body>
+</html>
