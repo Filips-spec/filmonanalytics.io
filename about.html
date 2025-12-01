@@ -270,7 +270,7 @@
             width: 200px;
             height: 200px;
             object-fit: cover;
-            border-radius: 50%;
+            border-radius: 15px;
             border: 3px solid var(--border);
             margin-bottom: 1.5rem;
         }
@@ -624,6 +624,7 @@
             .profile-image {
                 width: 150px;
                 height: 150px;
+                border-radius: 12px;
             }
 
             .cv-buttons {
@@ -685,11 +686,6 @@
 
     <section class="about-section">
         <div class="container">
-            <div class="page-header">
-                <h1>About Me</h1>
-                <p>Financial Data Analyst | Geopolitical Researcher | Strategic Thinker</p>
-            </div>
-
             <div class="about-grid">
                 <!-- Profile Sidebar -->
                 <aside class="profile-sidebar">
@@ -724,36 +720,6 @@
 
                 <!-- Main Content -->
                 <div class="main-content">
-                    <!-- Areas of Focus -->
-                    <div class="focus-card">
-                        <h2>
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <circle cx="12" cy="12" r="6"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                            </svg>
-                            Areas of Focus
-                        </h2>
-                        <div class="focus-grid">
-                            <div class="focus-item">
-                                <h3>Investment Analytics</h3>
-                                <p>Data-driven investment research, financial modelling, and strategic market analysis</p>
-                            </div>
-                            <div class="focus-item">
-                                <h3>Geopolitics & Strategy</h3>
-                                <p>Analysis of geopolitical dynamics, social trends, and their economic implications</p>
-                            </div>
-                            <div class="focus-item">
-                                <h3>Historical Trends</h3>
-                                <p>Studying historical cycles and patterns to inform contemporary strategic thinking</p>
-                            </div>
-                            <div class="focus-item">
-                                <h3>Disruptive Technology</h3>
-                                <p>Evaluating general-purpose technologies and their transformative potential</p>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Education -->
                     <div class="education-section">
                         <h2 class="section-title">
@@ -783,33 +749,30 @@
                                     <div class="skill-category">
                                         <h4>Technical & Analytical Skills</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">Data Analysis & Insight Generation</span>
-                                            <span class="skill-tag">Statistical Analysis</span>
-                                            <span class="skill-tag">Predictive Modelling</span>
-                                            <span class="skill-tag">Machine Learning (Regression, Decision Trees, Clustering)</span>
-                                            <span class="skill-tag">Data Cleaning & EDA</span>
-                                            <span class="skill-tag">Data Visualisation</span>
-                                            <span class="skill-tag">Dashboard Development</span>
-                                            <span class="skill-tag">Time-Series Analysis</span>
-                                            <span class="skill-tag">Financial Data Interpretation</span>
+                                            <span class="skill-tag">Data analysis & insight generation</span>
+                                            <span class="skill-tag">Statistical analysis & predictive modelling</span>
+                                            <span class="skill-tag">Machine learning fundamentals (regression, decision trees, clustering)</span>
+                                            <span class="skill-tag">Data cleaning, transformation & EDA</span>
+                                            <span class="skill-tag">Data visualisation & dashboard development</span>
+                                            <span class="skill-tag">Time-series & financial data interpretation</span>
                                         </div>
                                     </div>
                                     <div class="skill-category">
                                         <h4>Tools & Programming</h4>
                                         <div class="skill-tags">
                                             <span class="skill-tag">Python (pandas, NumPy, scikit-learn, matplotlib)</span>
-                                            <span class="skill-tag">SQL</span>
-                                            <span class="skill-tag">Excel (Advanced)</span>
-                                            <span class="skill-tag">Power BI / Tableau</span>
-                                            <span class="skill-tag">Git/GitHub</span>
+                                            <span class="skill-tag">SQL (data extraction, querying & manipulation)</span>
+                                            <span class="skill-tag">Excel (advanced formulas, pivot tables, analytics)</span>
+                                            <span class="skill-tag">Power BI / Tableau (visualisation & reporting)</span>
+                                            <span class="skill-tag">Git/GitHub version control</span>
                                         </div>
                                     </div>
                                     <div class="skill-category">
-                                        <h4>Professional Skills</h4>
+                                        <h4>Professional & Project Skills</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">Data Storytelling</span>
-                                            <span class="skill-tag">Business Recommendations</span>
-                                            <span class="skill-tag">Stakeholder Reporting</span>
+                                            <span class="skill-tag">Data storytelling & insight communication</span>
+                                            <span class="skill-tag">Translating analytics into business recommendations</span>
+                                            <span class="skill-tag">Stakeholder-focused reporting & presentation</span>
                                         </div>
                                     </div>
                                 </div>
@@ -835,34 +798,28 @@
                                     <div class="skill-category">
                                         <h4>Core Knowledge Areas</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">Microeconomics</span>
-                                            <span class="skill-tag">Macroeconomics</span>
-                                            <span class="skill-tag">Monetary Economics</span>
-                                            <span class="skill-tag">International Economics</span>
-                                            <span class="skill-tag">Economic Policy</span>
-                                            <span class="skill-tag">Public Economics</span>
-                                            <span class="skill-tag">Institutions & Governance</span>
-                                            <span class="skill-tag">Political Economy</span>
+                                            <span class="skill-tag">Microeconomics, macroeconomics, and monetary economics</span>
+                                            <span class="skill-tag">International economics & economic policy</span>
+                                            <span class="skill-tag">Public economics, institutions and governance</span>
+                                            <span class="skill-tag">Law, political economy and the functioning of public and private stakeholders</span>
                                         </div>
                                     </div>
                                     <div class="skill-category">
                                         <h4>Analytical & Research Skills</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">Economic Data Analysis</span>
-                                            <span class="skill-tag">Econometric Reasoning</span>
-                                            <span class="skill-tag">Policy Impact Assessment</span>
-                                            <span class="skill-tag">Comparative Analysis</span>
-                                            <span class="skill-tag">Market Analysis</span>
-                                            <span class="skill-tag">Academic Research</span>
+                                            <span class="skill-tag">Economic data analysis and interpretation</span>
+                                            <span class="skill-tag">Econometric reasoning and statistical evaluation</span>
+                                            <span class="skill-tag">Policy impact assessment and comparative analysis</span>
+                                            <span class="skill-tag">Ability to analyse markets, consumer behaviour and institutional contexts</span>
+                                            <span class="skill-tag">Report writing, academic research and structured argumentation</span>
                                         </div>
                                     </div>
                                     <div class="skill-category">
-                                        <h4>Professional Competencies</h4>
+                                        <h4>Professional & Transferable Competencies</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">Critical Thinking</span>
-                                            <span class="skill-tag">Economic Reasoning</span>
-                                            <span class="skill-tag">Theory-Practice Integration</span>
-                                            <span class="skill-tag">Effective Communication</span>
+                                            <span class="skill-tag">Critical thinking and problem-solving grounded in economic reasoning</span>
+                                            <span class="skill-tag">Ability to connect theory with real market and institutional dynamics</span>
+                                            <span class="skill-tag">Effective written and verbal communication</span>
                                         </div>
                                     </div>
                                 </div>
@@ -888,35 +845,44 @@
                                     <div class="skill-category">
                                         <h4>Core Knowledge Areas</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">Corporate Communication</span>
-                                            <span class="skill-tag">Institutional Communication</span>
-                                            <span class="skill-tag">Marketing & Branding</span>
-                                            <span class="skill-tag">Media Studies</span>
-                                            <span class="skill-tag">Digital Communication</span>
-                                            <span class="skill-tag">Public Relations</span>
-                                            <span class="skill-tag">Sociology & Social Dynamics</span>
+                                            <span class="skill-tag">Corporate, institutional & public communication</span>
+                                            <span class="skill-tag">Marketing, branding & audience engagement strategies</span>
+                                            <span class="skill-tag">Media studies, journalism & digital communication</span>
+                                            <span class="skill-tag">Organisational communication & internal relations</span>
+                                            <span class="skill-tag">Sociology, social dynamics & behavioural influence</span>
+                                            <span class="skill-tag">Public relations & stakeholder management</span>
+                                            <span class="skill-tag">Ethics, law & communication in public institutions</span>
                                         </div>
                                     </div>
                                     <div class="skill-category">
                                         <h4>Communication & Analytical Skills</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">Strategic Communication Planning</span>
-                                            <span class="skill-tag">Audience Analysis</span>
-                                            <span class="skill-tag">Content Creation</span>
-                                            <span class="skill-tag">Crisis Communication</span>
-                                            <span class="skill-tag">Reputation Management</span>
-                                            <span class="skill-tag">Qualitative Research</span>
-                                            <span class="skill-tag">Discourse Analysis</span>
+                                            <span class="skill-tag">Strategic communication planning (public, corporate & social)</span>
+                                            <span class="skill-tag">Audience analysis & message adaptation to different targets</span>
+                                            <span class="skill-tag">Content creation for digital & traditional media</span>
+                                            <span class="skill-tag">Crisis communication & reputation management</span>
+                                            <span class="skill-tag">Qualitative research, interviews, discourse & media analysis</span>
+                                            <span class="skill-tag">Ability to evaluate communication impact and effectiveness</span>
                                         </div>
                                     </div>
                                     <div class="skill-category">
-                                        <h4>Professional Competencies</h4>
+                                        <h4>Tools & Technical Skills</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">Persuasive Writing</span>
-                                            <span class="skill-tag">Public Speaking</span>
-                                            <span class="skill-tag">Project Coordination</span>
-                                            <span class="skill-tag">Stakeholder Mediation</span>
-                                            <span class="skill-tag">Creative Problem-Solving</span>
+                                            <span class="skill-tag">Social media management & analytics platforms</span>
+                                            <span class="skill-tag">Content writing & copywriting for web, press, social media</span>
+                                            <span class="skill-tag">Presentation tools (PowerPoint / Keynote / Canva)</span>
+                                            <span class="skill-tag">Basic data interpretation for communication reporting</span>
+                                            <span class="skill-tag">Multimedia communication (video, graphic materials)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-category">
+                                        <h4>Professional & Transferable Competencies</h4>
+                                        <div class="skill-tags">
+                                            <span class="skill-tag">Clear and persuasive writing</span>
+                                            <span class="skill-tag">Public speaking and effective interpersonal communication</span>
+                                            <span class="skill-tag">Project coordination & teamwork in communication contexts</span>
+                                            <span class="skill-tag">Ability to mediate between organisations, media & audiences</span>
+                                            <span class="skill-tag">Creative problem-solving & adaptability in dynamic environments</span>
                                         </div>
                                     </div>
                                 </div>
@@ -942,34 +908,83 @@
                                     <div class="skill-category">
                                         <h4>Core Knowledge Areas</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">Counselling Theory & Practice</span>
-                                            <span class="skill-tag">Active Listening</span>
-                                            <span class="skill-tag">Empathic Communication</span>
-                                            <span class="skill-tag">Human Behaviour</span>
-                                            <span class="skill-tag">Conflict Mediation</span>
+                                            <span class="skill-tag">Foundations of counselling theory and practice</span>
+                                            <span class="skill-tag">Principles of active listening and empathic communication</span>
+                                            <span class="skill-tag">Human behavior, emotional dynamics & interpersonal relationships</span>
+                                            <span class="skill-tag">Conflict mediation and communication management</span>
                                         </div>
                                     </div>
                                     <div class="skill-category">
-                                        <h4>Business-Support Skills</h4>
+                                        <h4>Counselling, Interpersonal & Business-Support Skills</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">Facilitation & Brainstorming</span>
-                                            <span class="skill-tag">Decision-Making Support</span>
-                                            <span class="skill-tag">Leadership Reflection</span>
-                                            <span class="skill-tag">Team Dynamics</span>
-                                            <span class="skill-tag">SMART Goal Setting</span>
+                                            <span class="skill-tag">Facilitation of brainstorming sessions for idea generation, problem-solving and innovation</span>
+                                            <span class="skill-tag">Business-focused counselling: supporting decision-making, stress management, leadership reflection and team dynamics</span>
                                         </div>
                                     </div>
                                     <div class="skill-category">
-                                        <h4>Applied Practice Skills</h4>
+                                        <h4>Tools, Techniques & Applied Methodologies</h4>
                                         <div class="skill-tags">
-                                            <span class="skill-tag">One-to-One Support</span>
-                                            <span class="skill-tag">Building Rapport & Trust</span>
-                                            <span class="skill-tag">Reflective Feedback</span>
-                                            <span class="skill-tag">Emotional Regulation</span>
-                                            <span class="skill-tag">Ethical Guidelines</span>
+                                            <span class="skill-tag">Goal-setting tools such as SMART objectives, session reframing and progress reviews</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-category">
+                                        <h4>Counselling & Interpersonal Skills</h4>
+                                        <div class="skill-tags">
+                                            <span class="skill-tag">Active listening & empathic presence</span>
+                                            <span class="skill-tag">Structuring a counselling session and goal setting</span>
+                                            <span class="skill-tag">Facilitating personal awareness, clarity & self-expression</span>
+                                            <span class="skill-tag">Managing sensitive conversations with respect & confidentiality</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-category">
+                                        <h4>Professional & Applied Practice Skills</h4>
+                                        <div class="skill-tags">
+                                            <span class="skill-tag">Conducting one-to-one support conversations</span>
+                                            <span class="skill-tag">Building rapport and trust with individuals</span>
+                                            <span class="skill-tag">Observation & reflective feedback techniques</span>
+                                            <span class="skill-tag">Self-awareness, emotional regulation & reflective practice</span>
+                                            <span class="skill-tag">Working within ethical guidelines and duty of care principles</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-category">
+                                        <h4>Tools & Approaches</h4>
+                                        <div class="skill-tags">
+                                            <span class="skill-tag">Counselling foundations with application toward measurable personal and professional development outcomes</span>
+                                            <span class="skill-tag">Goal-oriented support strategies — helping individuals move from problem identification to action-based solutions</span>
+                                            <span class="skill-tag">Purpose-led intervention design aimed at productivity, well-being and interpersonal efficiency</span>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Areas of Focus -->
+                    <div class="focus-card">
+                        <h2>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                            </svg>
+                            Areas of Focus
+                        </h2>
+                        <div class="focus-grid">
+                            <div class="focus-item">
+                                <h3>Investment Analytics</h3>
+                                <p>Data-driven investment research, financial modelling, and strategic market analysis</p>
+                            </div>
+                            <div class="focus-item">
+                                <h3>Geopolitics & Strategy</h3>
+                                <p>Analysis of geopolitical dynamics, social trends, and their economic implications</p>
+                            </div>
+                            <div class="focus-item">
+                                <h3>Historical Trends</h3>
+                                <p>Studying historical cycles and patterns to inform contemporary strategic thinking</p>
+                            </div>
+                            <div class="focus-item">
+                                <h3>Disruptive Technology</h3>
+                                <p>Evaluating general-purpose technologies and their transformative potential</p>
                             </div>
                         </div>
                     </div>
