@@ -2996,6 +2996,110 @@
             .summary {
                 padding: 20px;
             }
+
+            /* Mobile fixes for Manufacturing Employment Map */
+            #section-1 .map-section {
+                padding: 30px 0;
+                margin: 20px 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            #section-1 .map-container {
+                padding: 20px;
+                min-width: 650px;
+            }
+
+            #section1-map {
+                width: 100%;
+                min-height: 400px;
+            }
+
+            /* Mobile fixes for S&P 500 Chart */
+            .sp500-chart-section {
+                padding: 30px 20px !important;
+                margin: 20px 0 !important;
+            }
+
+            .chart-header {
+                padding: 0 10px;
+            }
+
+            .chart-header h2 {
+                font-size: 1.5rem !important;
+            }
+
+            .sp500-chart-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 10px 0;
+                margin: 0 -20px;
+                padding-left: 20px;
+            }
+
+            #section2-sp500Chart {
+                min-width: 700px !important;
+                width: 700px !important;
+                height: 400px !important;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px !important;
+                padding: 0 10px;
+            }
+
+            .stat-item {
+                padding: 12px 10px !important;
+            }
+
+            .stat-item h3 {
+                font-size: 0.7rem !important;
+            }
+
+            .stat-item .value {
+                font-size: 1.2rem !important;
+            }
+
+            .stat-item .subtext {
+                font-size: 0.7rem !important;
+            }
+
+            /* Mobile fixes for Trust in Institutions Chart */
+            .trust-chart-container {
+                padding: 20px 10px !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .institution-row {
+                grid-template-columns: 140px 1fr 55px !important;
+                gap: 8px !important;
+                min-width: 320px;
+            }
+
+            .institution-label {
+                font-size: 0.8rem !important;
+            }
+
+            .trust-score {
+                font-size: 0.9rem !important;
+            }
+
+            .bar-segment span {
+                font-size: 0.65rem !important;
+            }
+        }
+
+        /* Additional mobile landscape orientation support */
+        @media (max-width: 768px) and (orientation: landscape) {
+            #section1-map {
+                min-height: 300px;
+            }
+
+            #section2-sp500Chart {
+                height: 350px !important;
+            }
         }
     
     </style>
